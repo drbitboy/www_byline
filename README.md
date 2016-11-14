@@ -71,3 +71,35 @@ cgi-bin/pds_byline.cgi
 - Filter to prepend per-line anchors and seven-digit, zero-padded line
   numbers to flat ASCII files; file names come from REQUEST_URI, and
   the path to a file is ../${REQUEST_URI}
+
+
+#How it works
+
+    TopOfDirectoryTree/
+    |
+    +-->byline                   ### Symlink to . i.e. to TopOfDirectoryTree/.
+    |                            ### HTTPd configureation AliasMatch sends server to 
+    |                            ###   cgi-bin/pds_byline.cgi when it sees /byline/holdings/
+    |                            ###   and a matching extension (.txt, .asc, etc.) in the URL
+    |                            ### Otherwise, normal browsing of holdings occurs as symlink 
+    |                            ###   byline to . is essentialy a NOOP
+    |
+    +-->holdings/                ### Actual directory to be browsed
+    |     |
+    |     +-->subdir/            ### Sampe sub-directory of holdings/
+    |         |
+    |         +--whatever.txt    ### Sample filename
+    |
+    +--cgi-bin/
+       |
+       +-->pds_byline.cgi
+           |
+           +-> 1) runs in CWD of TopOfDirectoryTree/cgi-bin/
+           +-> 2) Receives envvar REQUEST_URI /byline/holdings/subdir/whatever.txt
+           +-> 3) replaces /byline with .. to get path from CWD to actual file ../holdings/subdir/whatever.txt
+           +-> 5) Output HTTP header (Content-type: ...) and initial HTML
+           +-> 4) Loop over lines from that file
+           |      |
+           |      +-> 4.1) prepend Anchor and line number to each line
+           |
+           +-> 5) Ouptut final HTML

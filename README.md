@@ -1,9 +1,8 @@
 # www_byline
-Allow browsing of directory structure and files with line-numbering on flat ASCII files
+Enable Apache HTTPd server to display directory structure and files with line-numbering on flat ASCII files
 
 
-Manifest
-====
+#Manifest
 
 byline
 

@@ -51,12 +51,9 @@ byline
 - Apache HTTPd configuration file
 - Not part of this repository, but contains lines like these:
 
-    AliasMatch ^/~user/(for_pds/pds_p2)/byline/.*[.](asc|cat|lbl|tab|txt)$ /home/user/public_html/$1/cgi-bin/pds_byline.cgi
+    AliasMatch ^/byline/holdings/.*[.](asc|cat|lbl|tab|txt)$ /cgi-bin/pds_byline.cgi
 
-    UserDir public_html
-
-    <Directory /home/user/public_html/>
-        #Loadmodule authn_google_module modules/mod_authn_google.so
+    <Directory /cgi-bin>
         AllowOverride All
     </Directory>
 
@@ -64,11 +61,13 @@ byline
 cgi-bin/.htaccess
 
 - Prevents Index listing by WWW server of ./cgi-bin/ directory
-- Allows scripts named *.cgi in ./cgi-bin/ directory to execute
+- Allows script named pds_byline.cgi in ./cgi-bin/ directory to execute
+- Assumes AllowOverride All for cgi-bin/ directory has been configured
+  - See previous comment
 
 
 cgi-bin/pds_byline.cgi
 
-- Filter to prepend seven-digit, zero-padded line numbers to flat ASCII
-  files; file names come from REQUEST_URI, and the path to a file is
-  ../${REQUEST_URI}
+- Filter to prepend per-line anchors and seven-digit, zero-padded line
+  numbers to flat ASCII files; file names come from REQUEST_URI, and
+  the path to a file is ../${REQUEST_URI}

@@ -78,7 +78,7 @@ cgi-bin/pds_byline.cgi
     TopOfDirectoryTree/
     |
     +-->byline                   ### Symlink to . i.e. to TopOfDirectoryTree/.
-    |                            ### HTTPd configureation AliasMatch sends server to 
+    |                            ### HTTPd configuration AliasMatch sends server to 
     |                            ###   cgi-bin/pds_byline.cgi when it sees /byline/holdings/
     |                            ###   and a matching extension (.txt, .asc, etc.) in the URL
     |                            ### Otherwise, normal browsing of holdings occurs as symlink 
@@ -95,7 +95,7 @@ cgi-bin/pds_byline.cgi
        +-->pds_byline.cgi
            |
            +-> 1) runs in CWD of TopOfDirectoryTree/cgi-bin/
-           +-> 2) Receives envvar REQUEST_URI /byline/holdings/subdir/whatever.txt
+           +-> 2) Extracts /byline/holdings/subdir/whatever.txt from CGI environment variable REQUEST_URI 
            +-> 3) replaces /byline with .. to get path from CWD to actual file ../holdings/subdir/whatever.txt
            +-> 5) Output HTTP header (Content-type: ...) and initial HTML
            +-> 4) Loop over lines from that file

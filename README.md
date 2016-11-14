@@ -11,7 +11,9 @@ byline
 
 
 /etc/httpd/conf.d/something.conf
+
   or
+
 /etc/httpd/conf/httpd.conf
 
 - Apache HTTPd configuration file

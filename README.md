@@ -2,7 +2,9 @@
 Enable Apache HTTPd server to display directory structure and files with line-numbering on flat ASCII files
 
 
-#How-to example:  http://pdssbn.astro.umd.edu/holdings/ as http://pdssbn.astro.umd.edu/byline/holdings/
+#How-to example:
+
+http://pdssbn.astro.umd.edu/holdings/ as http://pdssbn.astro.umd.edu/byline/holdings/
 
 0) Assume that holdings/ directory is in /home/www/top/holdings/
 

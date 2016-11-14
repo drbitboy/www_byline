@@ -2,6 +2,33 @@
 Enable Apache HTTPd server to display directory structure and files with line-numbering on flat ASCII files
 
 
+#How-to example:  http://pdssbn.astro.umd.edu/holdings/ as http://pdssbn.astro.umd.edu/byline/holdings/
+
+0) Assume that holdings/ directory is in /home/www/top/holdings/
+
+0.1) Assume all holdings/-related configuration is in /etc/httpd/conf.d/holdings.conf
+
+1) Add the following lines to /etc/httpd/conf.d/holdings.conf:
+
+    AliasMatch ^/byline/holdings/.*[.](asc|cat|lbl|tab|txt)$ /home/www/top/holdings/cgi-bin/pds_byline.cgi
+
+    <Directory /home/www/top/holdings/cgi-bin>
+        AllowOverride All
+    </Directory>
+
+2) CHDIR to the top of this repo
+
+2.1) rsync -av byline cgi-bin /home/www/top/holdings/
+
+3) Reload Apache HTTPd server e.g.
+
+     service httpd reload
+
+   or
+
+     service apache reload
+
+
 #Manifest
 
 byline

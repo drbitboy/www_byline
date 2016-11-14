@@ -62,7 +62,7 @@ uriPrefix =  r'/byline/'
 ###      CODMAC level, phase, and version, each delimited by hyphens
 ### N.B. URI regex does not allow full-stop (.) after data set ID
 ###      directory name until the final extension
-assert re.compile(r'^%sholdings/[a-z_]*-[a-z_]*-[a-z0-9_]*-[2-6]-[a-z0-9_]*-v[0-9.]*/[a-z0-9_/]*[.](asc|cat|lbl|tab|txt)$'%(uriPrefix,)).match(request_uri)
+assert re.compile(r'^%sholdings/[a-z_]*-[a-z_]*-[a-z0-9_]*-[1-9_]*-[a-z0-9_]*-v[0-9.]*/[a-z0-9_/]*[.](asc|cat|lbl|tab|txt)$'%(uriPrefix,)).match(request_uri)
 
 ########################################################################
 ### Open the file pointed to by the path ...

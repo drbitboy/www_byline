@@ -86,7 +86,7 @@ cgi-bin/pds_byline.cgi
     |
     +-->holdings/                ### Actual directory to be browsed
     |     |
-    |     +-->subdir/            ### Sampe sub-directory of holdings/
+    |     +-->sub/               ### Sampe sub-directory of holdings/
     |         |
     |         +--whatever.txt    ### Sample filename
     |
@@ -95,10 +95,10 @@ cgi-bin/pds_byline.cgi
        +-->pds_byline.cgi
            |
            +-> 1) runs in CWD of TopOfDirectoryTree/cgi-bin/
-           +-> 2) Extracts /byline/holdings/subdir/whatever.txt from CGI environment variable REQUEST_URI 
-           +-> 3) replaces /byline with .. to get path from CWD to actual file ../holdings/subdir/whatever.txt
+           +-> 2) Extracts /byline/holdings/sub/whatever.txt from CGI environment variable REQUEST_URI 
+           +-> 3) Mung /byline to be .. to get path from CWD to actual file ../holdings/sub/whatever.txt
            +-> 5) Output HTTP header (Content-type: ...) and initial HTML
-           +-> 4) Loop over lines from that file
+           +-> 4) Open file from munged REQUEST_URI value and loop over its lines
            |      |
            |      +-> 4.1) prepend Anchor and line number to each line
            |

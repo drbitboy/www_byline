@@ -97,7 +97,7 @@ with open(os.path.join('..',request_uri[len(uriPrefix):]),'rb') as fInp:
     ### - Prefix with seven-digit, zero-padded line number and a colon
     ### - Strip trailing space (newline, carriage return, spaces)
     ### - Convert any < and > characters to &lt; and &gt; respectively
-    sys.stdout.write('<a id="line_%d" />%07d:%s\n' % (lineOrdinal,lineOrdinal,rawline.rstrip().replace('<','&lt;').replace('>','&gt;'),))
+    sys.stdout.write('<a id="line_%d">%07d</a>:%s\n' % (lineOrdinal,lineOrdinal,rawline.rstrip().replace('<','&lt;').replace('>','&gt;'),))
 
 ########################################################################
 ### Output final HTML 
